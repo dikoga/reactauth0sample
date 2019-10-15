@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import Checkout from "./components/Checkout";
 import GooglePeople from "./components/GooglePeople";
 import PrivateRoute from "./components/PrivateRoute";
+import ProtectedApi from "./components/ProtectedApi";
 
 function App() {
   const { loading } = useAuth0();
@@ -31,6 +32,7 @@ function App() {
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute path="/checkout" component={Checkout} />
           <PrivateRoute path="/googlepeople" component={GooglePeople} />
+          <PrivateRoute path="/protectedapi" component={ProtectedApi} />
         </Switch>
       </BrowserRouter>
     </div>

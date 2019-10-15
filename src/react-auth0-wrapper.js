@@ -13,13 +13,17 @@ export const Auth0Provider = ({
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [user, setUser] = useState();
+  const [token, setToken] = useState();
   const [auth0Client, setAuth0] = useState();
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
 
   useEffect(() => {
     const initAuth0 = async () => {
-      const auth0FromHook = await createAuth0Client(initOptions);
+      const auth0FromHook = await createAuth0Client({
+        audience: 'https://nexus.xpi.us',
+        ...initOptions
+      });
       setAuth0(auth0FromHook);
 
       if (window.location.search.includes("code=")) {
@@ -34,6 +38,8 @@ export const Auth0Provider = ({
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
         setUser(user);
+        const token = await auth0FromHook.getTokenSilently();
+        setToken(token);
       }
 
       setLoading(false);
@@ -53,6 +59,8 @@ export const Auth0Provider = ({
     }
     const user = await auth0Client.getUser();
     setUser(user);
+    const token = await auth0Client.getTokenSilently();
+    setToken(token);
     setIsAuthenticated(true);
   };
 
@@ -60,6 +68,8 @@ export const Auth0Provider = ({
     setLoading(true);
     await auth0Client.handleRedirectCallback();
     const user = await auth0Client.getUser();
+    const token = await auth0Client.getTokenSilently();
+    setToken(token);
     setLoading(false);
     setIsAuthenticated(true);
     setUser(user);
@@ -69,6 +79,7 @@ export const Auth0Provider = ({
       value={{
         isAuthenticated,
         user,
+        token,
         loading,
         popupOpen,
         loginWithPopup,
