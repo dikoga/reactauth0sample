@@ -18,11 +18,11 @@ You will also see any lint errors in the console.
 
 ### How it works
 
-1- There is a public area in the app root path "/"
-2- A login at the top of the page
-3- The login offers sign in/up with user and password + Google IdP
-4- When logged in, the root path shows more information
-5- The "/profile" path shows the information retrieved from the Auth0 profile transferred in via token, including custom claims
-6- The "/checkout" path controls the e-mail verification state. If the e-mail is not yet verified on Auth0, it will not allow the user to checkout
-7- The "/googlepeople" path shows the total connections the user has if he/she has signed in with Google IdP
-8- The "/protectedapi" path shows how to implement a request to an API that is protected with Auth0 OAuth2.0
+1- There is a public area in the app root path "/"<br />
+2- A login at the top of the page<br />
+3- The login offers sign in/up with user and password + Google IdP<br />
+4- When logged in, the root path shows more information<br />
+5- The "/profile" path shows the information retrieved from the Auth0 profile transferred in via token, including custom claims<br />
+6- The "/checkout" path controls the e-mail verification state. If the e-mail is not yet verified on Auth0, it will not allow the user to checkout<br />
+7- The "/googlepeople" path shows the total connections the user has if he/she has signed in with Google IdP<br />
+8- The "/protectedapi" path shows how to implement a request to an API that is protected with Auth0 OAuth2.0<br />
