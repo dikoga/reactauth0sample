@@ -32,7 +32,6 @@ export const Auth0Provider = ({
       }
 
       const isAuthenticated = await auth0FromHook.isAuthenticated();
-
       setIsAuthenticated(isAuthenticated);
 
       if (isAuthenticated) {
@@ -68,11 +67,11 @@ export const Auth0Provider = ({
     setLoading(true);
     await auth0Client.handleRedirectCallback();
     const user = await auth0Client.getUser();
+    setUser(user);
     const token = await auth0Client.getTokenSilently();
     setToken(token);
     setLoading(false);
     setIsAuthenticated(true);
-    setUser(user);
   };
   return (
     <Auth0Context.Provider

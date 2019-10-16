@@ -3,7 +3,9 @@ import { useAuth0 } from "../react-auth0-wrapper";
 
 const GooglePeople = () => {
   const { user } = useAuth0();
-  if (!user.sub.startsWith('google-oauth2|')) {
+  const googleConnections = user['https://pizza42.com/googleconnections'];
+  
+  if (!!!googleConnections) {
     return (
       <header className="App-header">
         <p>Ooopsss, this feature is only available for users signed with a Google account.</p>
@@ -14,7 +16,7 @@ const GooglePeople = () => {
   return (
     <Fragment>
       <header className="App-header">
-        <p>Total of Google Connections found: {user['https://pizza42.com/googleconnections']}</p>
+        <p>Total of Google Connections found: {googleConnections}</p>
       </header>
     </Fragment>
   );
